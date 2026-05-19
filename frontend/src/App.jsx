@@ -7,6 +7,7 @@ import AddBoarding from "./pages/AddBoarding";
 import MyBookings from "./pages/MyBookings";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import BoardingDetails from "./pages/BoardingDetails";
 
 import "./App.css";
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/my-bookings" element={<MyBookings />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/boardings/:id" element={<BoardingDetails />} />
       </Routes>
     </BrowserRouter>
   );

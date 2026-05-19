@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   getAllBoardings,
   searchBoardingsByLocation,
@@ -141,7 +142,9 @@ function Boardings() {
 
                 <p className="contact">📞 {boarding.contactNumber}</p>
 
-                <button className="btn primary">Request Booking</button>
+                <Link to={`/boardings/${boarding.id}`} className="btn primary">
+                  View Details
+                </Link>
               </div>
             </div>
           ))}
