@@ -35,7 +35,7 @@ export async function filterBoardingsByGender(genderType) {
     `${API_BASE_URL}/boardings/filter/gender?genderType=${genderType}`
   );
 
-  
+
   return response.json();
 }
 
@@ -68,6 +68,15 @@ export async function createBooking(bookingData) {
     const errorText = await response.text();
     console.error("Booking error:", errorText);
     throw new Error(errorText);
+  }
+
+  return response.json();
+}
+export async function getBookingsByUserId(userId) {
+  const response = await fetch(`${API_BASE_URL}/bookings/user/${userId}`);
+
+  if (!response.ok) {
+    throw new Error("Failed to load user bookings");
   }
 
   return response.json();
