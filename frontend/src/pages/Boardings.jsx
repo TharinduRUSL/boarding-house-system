@@ -94,8 +94,25 @@ function Boardings() {
         <div className="boarding-grid">
           {boardings.map((boarding) => (
             <div className="boarding-card" key={boarding.id}>
-              <div className="boarding-image">
-                {boarding.genderType === "GIRLS_ONLY" ? "🏠👩" : "🏠👨"}
+              <div
+                className={`boarding-image ${
+                  boarding.genderType === "GIRLS_ONLY"
+                    ? "girls-card-image"
+                    : boarding.genderType === "BOYS_ONLY"
+                    ? "boys-card-image"
+                    : "any-card-image"
+                }`}
+              >
+                <div className="image-overlay">
+                  <span className="big-icon">
+                    {boarding.genderType === "GIRLS_ONLY"
+                      ? "👩‍🎓"
+                      : boarding.genderType === "BOYS_ONLY"
+                      ? "👨‍🎓"
+                      : "🏠"}
+                  </span>
+                  <p>{boarding.genderType}</p>
+                </div>
               </div>
 
               <div className="boarding-content">
@@ -106,7 +123,9 @@ function Boardings() {
                 <div className="boarding-tags">
                   <span>{boarding.genderType}</span>
                   <span>{boarding.roomType}</span>
-                  <span>Rs. {boarding.monthlyPrice}</span>
+                  <span className="price-tag">
+                    Rs. {boarding.monthlyPrice} / month
+                  </span>
                 </div>
 
                 <div className="facility-list">
@@ -114,7 +133,9 @@ function Boardings() {
                   {boarding.foodAvailable && <span>Food</span>}
                   {boarding.parkingAvailable && <span>Parking</span>}
                   {boarding.cctvAvailable && <span>CCTV</span>}
-                  {boarding.femaleWardenAvailable && <span>Female Warden</span>}
+                  {boarding.femaleWardenAvailable && (
+                    <span>Female Warden</span>
+                  )}
                   {boarding.secureGateAvailable && <span>Secure Gate</span>}
                 </div>
 
